@@ -115,6 +115,8 @@ function enqueue_scripts() {
 		'1.0.0',
 		true
 	);
+
+	wp_localize_script( 'variants-custom-html-element', 'variantsActiveTest', (int) get_latest_ab_test_id() );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_scripts' );
 

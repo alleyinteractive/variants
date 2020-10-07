@@ -38,3 +38,16 @@ class Variant extends HTMLElement {
 }
 
 window.customElements.define('variant-test', Variant);
+
+// Remove local storage if there is no active test.
+if (
+  typeof variantsActiveTest !== 'undefined'
+  && 0 === variantsActiveTest
+  && (
+    null !== window.localStorage.getItem('variant-group')
+    || null !== window.localStorage.getItem('variant-type')
+  )
+) {
+  window.localStorage.removeItem('variant-group');
+  window.localStorage.removeItem('variant-type');
+}
